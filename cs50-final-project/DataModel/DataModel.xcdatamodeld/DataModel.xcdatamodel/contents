@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="KnittingPattern" representedClassName="KnittingPattern" syncable="YES" codeGenerationType="category">
+        <attribute name="file" attributeType="URI"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="previewImage" optional="YES" attributeType="Binary"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="KnittingPatternCategory" inverseName="patterns" inverseEntity="KnittingPatternCategory"/>
+    </entity>
+    <entity name="KnittingPatternCategory" representedClassName="KnittingPatternCategory" syncable="YES" codeGenerationType="category">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="patterns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KnittingPattern" inverseName="category" inverseEntity="KnittingPattern"/>
+    </entity>
+    <elements>
+        <element name="KnittingPattern" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="KnittingPatternCategory" positionX="-54" positionY="-9" width="128" height="88"/>
+    </elements>
+</model>
