@@ -29,6 +29,9 @@ struct CategoryFilterView: View {
                         return
                     }
                     print(indexSet.first!)
+                    for pattern in categories.categories[indexSet.first!].patternArray {
+                        pattern.category = categories.categories.first(where: { category in category.name == "Other" })
+                    }
                     context.delete(categories.categories[indexSet.first!])
                     if DataController.save() {
                         categories.refresh()
@@ -58,7 +61,12 @@ struct CategoryFilterView: View {
             .navigationBarTitle("Categories")
             .alert(Text("Add New Category"), isPresented: $addCategoryShown) {
                 Button("Save") {
-                    
+                    let category = KnittingPatternCategory(context: context)
+                    category.name = categoryName
+                    category.id = UUID()
+                    if DataController.save() {
+                        categories.refresh()
+                    }
                 }
                 TextField("Category Name", text: $categoryName)
             } message: {

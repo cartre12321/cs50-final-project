@@ -30,6 +30,7 @@ class DataController: ObservableObject {
     
     // Save Managed Object Context through DataController class (keeping it centralized)
     static func save() -> Bool {
+        // Catch any errors thrown
         do {
             try self.context.save()
             return true

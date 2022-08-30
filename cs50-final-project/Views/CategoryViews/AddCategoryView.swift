@@ -12,7 +12,6 @@ struct AddCategoryView: View {
     @State var categoryName = ""
     var body: some View {
         NeedToFixView()
-
     }
 }
 
